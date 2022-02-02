@@ -44,7 +44,16 @@ class UsersRepository implements IUsersRepository {
   }
 
   turnAdmin(receivedUser: User): User {
-    // Complete aqui
+    const userIndex = this.users.indexOf(receivedUser);
+
+    const user = receivedUser;
+
+    user.admin = true;
+    user.updated_at = new Date();
+
+    this.users.splice(userIndex, 1, user);
+
+    return user;
   }
 
   list(): User[] {
